@@ -1,0 +1,46 @@
+@page "/contacts/edit/{id:int}"
+@using appblazor.Data
+@inject ContactService Service
+@inject NavigationManager Nav
+
+<h3>Edit Contact</h3>
+
+@if (contact == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="contact" OnValidSubmit="Save">
+        <div class="mb-3">
+            <label>Name</label>
+            <InputText class="form-control" @bind-Value="contact.Name" />
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <InputText class="form-control" @bind-Value="contact.Email" />
+        </div>
+
+        <button class="btn btn-success" type="submit">Save</button>
+        <button class="btn btn-secondary ms-2" @onclick="Back">Back</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public int id { get; set; }
+    Areas.Identity.Data.Contact? contact;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contact = await Service.GetById(id);
+    }
+
+    async Task Save()
+    {
+        await Service.Update(contact!);
+        Nav.NavigateTo("/contacts");
+    }
+
+    void Back() => Nav.NavigateTo("/contacts");
+}

@@ -32,6 +32,22 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/sergio/Documentos/dotnet/blazor-e-docker/appblazor/Components/Contacts/ContactCreate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db250YWN0cy9Db250YWN0Q3JlYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sergio/Documentos/dotnet/blazor-e-docker/appblazor/Components/Contacts/ContactDelete.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db250YWN0cy9Db250YWN0RGVsZXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sergio/Documentos/dotnet/blazor-e-docker/appblazor/Components/Contacts/ContactEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db250YWN0cy9Db250YWN0RWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sergio/Documentos/dotnet/blazor-e-docker/appblazor/Components/Contacts/ContactList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db250YWN0cy9Db250YWN0TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/sergio/Documentos/dotnet/blazor-e-docker/appblazor/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Db3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

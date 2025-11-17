@@ -1,0 +1,33 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Teste#123
+    ports:
+      - 1433:1433
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-U", "sa", "-P", "Teste#123", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 40s
+    networks:
+      - databasenetwork
+    volumes:
+      - databasevolume:/var/opt/mssql
+  blazorapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - databasenetwork
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+volumes:
+  databasevolume:
+networks:
+  databasenetwork:

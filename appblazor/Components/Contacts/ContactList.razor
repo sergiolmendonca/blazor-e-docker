@@ -1,0 +1,51 @@
+@page "/contacts"
+@using appblazor.Data
+@inject ContactService Service
+@inject NavigationManager Nav
+
+<h3>Contacts</h3>
+
+<button class="btn btn-primary" @onclick="Create">New Contact</button>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (contacts == null)
+        {
+            <tr><td colspan="3">Loading...</td></tr>
+        }
+        else
+        {
+            @foreach (var c in contacts)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>@c.Email</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" @onclick="() => Edit(c.Id)">Edit</button>
+                        <button class="btn btn-sm btn-danger ms-2" @onclick="() => Delete(c.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    List<Areas.Identity.Data.Contact>? contacts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contacts = await Service.GetAll();
+    }
+
+    void Create() => Nav.NavigateTo("/contacts/create");
+    void Edit(int id) => Nav.NavigateTo($"/contacts/edit/{id}");
+    void Delete(int id) => Nav.NavigateTo($"/contacts/delete/{id}");
+}

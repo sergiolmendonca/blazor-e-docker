@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using appblazor.Areas.Identity.Data;
 
@@ -11,9 +12,11 @@ using appblazor.Areas.Identity.Data;
 namespace appblazor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251117093822_InitalMigration")]
+    partial class InitalMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,12 +255,6 @@ namespace appblazor.Migrations
                             Id = 1,
                             Email = "teste",
                             Name = "Sergio"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "teste@teste",
-                            Name = "Ailone"
                         });
                 });
 

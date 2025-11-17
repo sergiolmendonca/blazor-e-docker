@@ -12,8 +12,8 @@ using appblazor.Areas.Identity.Data;
 namespace appblazor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251114103915_IncluiContatos")]
-    partial class IncluiContatos
+    [Migration("20251117181158_adicionaContact")]
+    partial class adicionaContact
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,6 +255,12 @@ namespace appblazor.Migrations
                             Id = 1,
                             Email = "teste",
                             Name = "Sergio"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "teste@teste",
+                            Name = "Ailone"
                         });
                 });
 

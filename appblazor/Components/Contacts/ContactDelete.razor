@@ -1,0 +1,39 @@
+@page "/contacts/delete/{id:int}"
+@using appblazor.Data
+@inject ContactService Service
+@inject NavigationManager Nav
+
+<h3>Delete Contact</h3>
+
+@* @if (contact == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>Are you sure you want to delete this contact?</p>
+    <strong>@contact.Name</strong> - @contact.Email
+
+    <br /><br />
+
+    <button class="btn btn-danger" @onclick="Delete">Delete</button>
+    <button class="btn btn-secondary ms-2" @onclick="Back">Cancel</button>
+} *@
+
+@code {
+    [Parameter] public int id { get; set; }
+    Areas.Identity.Data.Contact? contact;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contact = await Service.GetById(id);
+    }
+
+    async Task Delete()
+    {
+        await Service.Delete(id);
+        Nav.NavigateTo("/contacts");
+    }
+
+    void Back() => Nav.NavigateTo("/contacts");
+}

@@ -1,0 +1,33 @@
+@page "/contacts/create"
+@using appblazor.Data
+@inject ContactService Service
+@inject NavigationManager Nav
+
+<h3>Create Contact</h3>
+
+<EditForm Model="contact" OnValidSubmit="Save">
+    <div class="mb-3">
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="contact.Name" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <InputText class="form-control" @bind-Value="contact.Email" />
+    </div>
+
+    <button class="btn btn-success" type="submit">Save</button>
+    <button class="btn btn-secondary ms-2" @onclick="Back">Back</button>
+</EditForm>
+
+@code {
+    Areas.Identity.Data.Contact contact = new();
+
+    async Task Save()
+    {
+        await Service.Add(contact);
+        Nav.NavigateTo("/contacts");
+    }
+
+    void Back() => Nav.NavigateTo("/contacts");
+}
